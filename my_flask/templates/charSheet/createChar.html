@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+
+{% block head %} 
+
+{% endblock %}
+
+{% block body %}
+<span class="help-block h5">Please enter your character's details below:</span><br>
+<div class="container">
+    <form>
+        <div class="form-row">
+            <div class="form-group col-4">
+                <label for="charName">Name</label>
+                <input type="text" class="form-control" id="charName" value="">
+            </div>
+            <div class="form-group col-4">
+                <label for="charRace">Race</label>
+                <input type="text" class="form-control" id="charRace" value="">
+            </div>
+            <br>
+            <div class="form-group col-3">
+                <label for="charSex">Sex</label>
+                <select class="form-control" id="charSex">
+                    <option>M</option>
+                    <option>F</option>
+                </select>
+            </div>
+            <div class="form-group col-2">
+                <label for="charAge">Age</label>
+                <input type="text" pattern="\d*" class="form-control" min="1" maxlength="5" id="charAge">
+                <p>years old</p>
+            </div>
+            <div class="form-group col-2">
+                <label for="charHeight">Height</label>
+                <input type="text" pattern="\d*" class="form-control" min="1" maxlength="3" id="charHeight">
+                <p>inches</p>
+            </div>
+            <div class="form-group col-2">
+                <label for="charWeight">Weight</label>
+                <input type="text" pattern="\d*" class="form-control" min="1" maxlength="4" id="charWeight">
+                <p>lbs.</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <table class="table table-sm table-borderless">
+                <thead class="thead-dark">
+                    <tr class="d-flex">
+                        <th class="col-3" scope="col">Attributes</th>
+                        <th class="col-2" scope="col">Value</th>
+                        <th class="col-2" scope="col">Bonus</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="d-flex">
+                        <td class="col-3">Strength</td>
+                        <td class="col-2">
+                            <input class="form-control" type="text" pattern="\^([0-1]?[0-9]|20)$" id="strength" min="1" max="20" maxlength="2" value="0">
+                        </td>
+                        <td class="col-2"></td>
+                    </tr>
+                    <tr class="d-flex">
+                        <td class="col-3">Dexterity</td>
+                        <td class="col-2">
+                            <input class="form-control" type="text" pattern="\d*" id="dexterity" min="1" max="20" maxlength="2" value="0">
+                        </td>
+                        <td class="col-2"></td>
+                    </tr>
+                    <tr class="d-flex">
+                        <td class="col-3">Constitution</td>
+                        <td class="col-2">
+                            <input class="form-control" type="text" pattern="\d^([1-9]?[0-9]|20)$" id="constitution" min="1" max="20" maxlength="2" value="0">
+                        </td>
+                        <td class="col-2"></td>
+                    </tr>
+                    <tr class="d-flex">
+                        <td class="col-3">Intelligence</td>
+                        <td class="col-2">
+                            <input class="form-control" type="text" pattern="\d^([0-1]?[0-9]|20)$" id="intelligence" min="1" max="20" maxlength="2" value="0">
+                        </td>
+                        <td class="col-2"></td>
+                    </tr>
+                    <tr class="d-flex">
+                        <td class="col-3">Wisdom</td>
+                        <td class="col-2">
+                            <input class="form-control" type="text" pattern="\d^([1-9]?[0-9]|20)$" id="wisdom" min="1" max="20" maxlength="2" value="0">
+                        </td>
+                        <td class="col-2"></td>
+                    </tr>
+                    <tr class="d-flex">
+                        <td class="col-3">Charisma</td>
+                        <td class="col-2">
+                            <input class="form-control" type="text" pattern="\d^([1-9]?[0-9]|20)$" id="charisma" min="1" max="20" maxlength="2" value="0">
+                        </td>
+                        <td class="col-2"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <button type="button" class="btn btn-dark">Save</button>
+        </div>
+    </form>
+</div>
+{% endblock %}
