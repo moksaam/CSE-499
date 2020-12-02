@@ -1,5 +1,6 @@
 from flask import Flask, jsonify, request, session
 from app import db
+from user.models import User
 import uuid
 
 class playerCharacter:
@@ -24,4 +25,7 @@ class playerCharacter:
             "chaAtt": request.form.get('chaAtt')
         }
 
-        return jsonify(pCharacter), 200
+        #if session['logged_in'] == True & session['user_id'] == pCharacter['user_id']:
+            #return db.characters.insert_one(pCharacter)
+        #console.log(pCharacter)
+        return db.characters.insert_one(pCharacter), 200

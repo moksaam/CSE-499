@@ -49,12 +49,13 @@ $("form[name=saveCharacter").submit(function(e) {
     var data = $form.serialize();
 
     $.ajax({
-        url: "/character/save",
+        url: "'/createCharacter/saveChar",
         type: "POST",
         data: data,
         dataType: "json",
-        success: function(_resp) {
-            console.log();
+        success: function(resp) {
+            console.log(resp);
+            window.location.href = "/charSkills";
         },
         error: function(resp) {
             $error.text(resp.responseJSON.error).removeClass("error--hidden");

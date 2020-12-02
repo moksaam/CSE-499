@@ -5,6 +5,12 @@
 		},
 		{
 			"path": "static"
+		},
+		{
+			"path": "user"
+		},
+		{
+			"path": "character"
 		}
 	],
 	"settings": {}

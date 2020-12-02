@@ -1,12 +1,15 @@
 from flask import Flask, render_template, request, session, redirect
 from functools import wraps
+from pymongo import MongoClient
 import os
 
 app = Flask(__name__)
 app.secret_key = os.urandom(12)
 
 # Database
-from mydb import db
+from mydb import uri
+client = MongoClient(uri)
+db = client.mongologin
 
 # Decorators
 def login_required(f):
