@@ -1,5 +1,4 @@
-from flask import Flask, flash, redirect, render_template, request, session, abort, url_for
-from pymongo import MongoClient
+from flask import Flask, render_template, request, session
 from functools import wraps
 import os
 
@@ -7,12 +6,7 @@ app = Flask(__name__)
 app.secret_key = os.urandom(12)
 
 # Database
-#app.config["MONGO_URI"] = "mongodb+srv://test_user:testasNM0103!@cluster0.kkkfb.mongodb.net/test?retryWrites=true&w=majority"	
-uri = "mongodb+srv://test_user:testasNM0103%21@cluster0.kkkfb.mongodb.net/mongologin?retryWrites=true&w=majority"
-client = MongoClient(uri)
-db = client.mongologin
-
-#mongo = PyMongo(app)
+from mydb import db
 
 # Decorators
 def login_required(f):
