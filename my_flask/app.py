@@ -1,78 +1,63 @@
-from flask import Flask
-from flask import flash, redirect, render_template, requests, session, abort
+from flask import Flask, flash, redirect, render_template, request, session, abort, url_for
+from pymongo import MongoClient
+from functools import wraps
 import os
 
 app = Flask(__name__)
-def createCharSubmit():
-	
-	pass
+app.secret_key = os.urandom(12)
+
+# Database
+#app.config["MONGO_URI"] = "mongodb+srv://test_user:testasNM0103!@cluster0.kkkfb.mongodb.net/test?retryWrites=true&w=majority"	
+uri = "mongodb+srv://test_user:testasNM0103%21@cluster0.kkkfb.mongodb.net/mongologin?retryWrites=true&w=majority"
+client = MongoClient(uri)
+db = client.mongologin
+
+#mongo = PyMongo(app)
+
+# Decorators
+def login_required(f):
+	@wraps(f)
+	def wrap(*args, **kwargs):
+		if 'logged_in' in session:
+			return f(*args, **kwargs)
+		else:
+			return redirect('/')
+	return wrap
+
+# Routes
+from user import routes
+from character import routes
+
 @app.route('/')
 def home():
-	if not session.get('logged_in'):
-		return render_template('login.html')
-	else:
-		return "Hello Boss!"
+	return render_template('home.html')	  # render a template
 
 
-@app.route('home/login', methods=['POST'])
-def do_admin_login():
-	if requests.form['password'] == 'password' and requests.form['username'] == 'admin':
-		session['logged_in'] = True
-		return redirect('/index')
-	else:
-		flash('wrong password!')
-		return home()
+@app.route('/register')
+def register():
+	return render_template('register.html')  # render a template
 
 
-@app.route('home/index')
+@app.route('/index/')
 def index():
-	if session.get('logged_in'):
-		return render_template('index.html')
-	else:
-		return "Hello Boss!"
-	
+	return render_template('index.html')  # render a template
 
 
-@app.route('charSheet/createChar', methods=['POST'])
+@app.route('/createChar')
 def createChar():
 	return render_template('createChar.html')  # render a template
 
 
-@app.route('charSheet/charSkills')
+@app.route('/charSkills')
 def charSkills():
 	return render_template('charSkills.html')  # render a template
 
 
-@app.route('charSheet/charSpells')
+@app.route('/charSpells')
 def charSpells():
 	return render_template('charSpells.html')  # render a template
 
 
-@app.route('charSheet/equipment')
+@app.route('/equipment')
 def equipment():
 	return render_template('equipment.html')  # render a template
-
-
-@app.route('/test')
-def test():
-
-	POST_USERNAME = "python"
-	POST_PASSWORD = "python"
-
-	Session = sessionmaker(bind=engine)
-	s = Session()
-	query = s.query(User).filter(User.username.in_([POST_USERNAME]), User.password.in_([POST_PASSWORD]))
-	result = query.first()
-	if result:
-		return "Object found"
-	else:
-		return "Object not found " + POST_USERNAME + " " + POST_PASSWORD
-
-
-@app.route("/logout")
-def logout():
-	session['logged_in'] = False
-	return home()
-	if __name__ == "__main__":
-		app.secret_key = os.urandom(12)
-		app.run(debug=True, host='0.0.0.0', port=4000)

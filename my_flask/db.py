@@ -1,21 +1,9 @@
 from pymongo import MongoClient
-
-client = MongoClient("mongodb+srv://test_user:testasNM0103!@cluster0.kkkfb.mongodb.net/test?retryWrites=true&w=majority")
-db = client.test
-
-char_collection.insert_one({
-    
-})
-
-
-try:
- 
-    print("MongoDB version is %s" %
- 
-            client.server_info()['version'])
- 
-except pymongo.errors.OperationFailure as error:
- 
-    print(error)
- 
-    quit(1)
+# pprint library is used to make the output look more pretty
+from pprint import pprint
+# connect to MongoDB, change the << MONGODB URL >> to reflect your own connection string
+client = MongoClient("mongodb+srv://test_user:testasNM0103%21@cluster0.kkkfb.mongodb.net/mongologin?retryWrites=true&w=majority")
+db=client.mongologin
+# Issue the serverStatus command and print the results
+serverStatusResult=db.command("serverStatus")
+pprint(serverStatusResult)
