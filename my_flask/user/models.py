@@ -1,6 +1,6 @@
 from flask import Flask, jsonify, request, session, redirect
 from passlib.hash import pbkdf2_sha256
-from app import db
+from mydb import db
 import uuid
 
 class User:
@@ -16,7 +16,7 @@ class User:
         
         # Create the user object
         user = {
-            "user_id": uuid.uuid4().hex,
+            "_id": uuid.uuid4().hex,
             "username": request.form.get('username'),
             "email": request.form.get('email'),
             "password": request.form.get('password'),

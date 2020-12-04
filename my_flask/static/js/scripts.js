@@ -42,20 +42,20 @@ $("form[name=login_form").submit(function(e) {
     e.preventDefault();
 });
 
-$("form[name=saveCharacter").submit(function(e) {
+$("form[name=saveChar_form").submit(function(e) {
 
     var $form = $(this);
     var $error = $form.find(".error");
     var data = $form.serialize();
 
     $.ajax({
-        url: "'/createCharacter/saveChar",
+        url: "/createCharacter/saveChar",
         type: "POST",
         data: data,
         dataType: "json",
         success: function(resp) {
-            console.log(resp);
-            window.location.href = "/charSkills";
+            console.log(data);
+            window.location.href = "/charSkills/";
         },
         error: function(resp) {
             $error.text(resp.responseJSON.error).removeClass("error--hidden");

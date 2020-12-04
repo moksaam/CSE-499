@@ -1,16 +1,22 @@
 from flask import Flask, jsonify, request, session
-from app import db
+from mydb import db
 from user.models import User
 import uuid
 
 class playerCharacter:
 
     def saveChar(self):
+        print(request.form)
+
+        if 'user' in session:
+            user_id = session['_id']
+            print(user_id)
+            
 
         # Create the player character object
         pCharacter = {            
             "_id": uuid.uuid4().hex,
-            "user_id": session.get('user_id'),
+            "user_id": session['_id'],
             "charName": request.form.get('charName'),
             "charRace": request.form.get('charRace'),
             "charAge": request.form.get('charAge'),
@@ -25,7 +31,5 @@ class playerCharacter:
             "chaAtt": request.form.get('chaAtt')
         }
 
-        #if session['logged_in'] == True & session['user_id'] == pCharacter['user_id']:
-            #return db.characters.insert_one(pCharacter)
-        #console.log(pCharacter)
-        return db.characters.insert_one(pCharacter), 200
+        if db.characters.insert_one(pCharacter):
+            return jsonify(pCharacter), 200

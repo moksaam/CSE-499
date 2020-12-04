@@ -7,37 +7,37 @@
 {% block body %}
 <span class="help-block h5">Please enter your character's details below:</span><br>
 <div class="container">
-    <form name="saveCharacter">
+    <form name="saveChar_form">
         <div class="form-row">
             <div class="form-group col-4">
                 <label for="charName">Name</label>
-                <input type="text" class="form-control" id="charName" value="">
+                <input type="text" class="form-control" name="charName" value="">
             </div>
             <div class="form-group col-4">
                 <label for="charRace">Race</label>
-                <input type="text" class="form-control" id="charRace" value="">
+                <input type="text" class="form-control" name="charRace" value="">
             </div>
             <br>
             <div class="form-group col-3">
                 <label for="charSex">Sex</label>
-                <select class="form-control" id="charSex">
+                <select class="form-control" name="charSex">
                     <option>M</option>
                     <option>F</option>
                 </select>
             </div>
             <div class="form-group col-2">
                 <label for="charAge">Age</label>
-                <input type="text" pattern="\d*" class="form-control" min="1" maxlength="5" id="charAge">
+                <input type="text" class="form-control" min="1" maxlength="5" name="charAge">
                 <p>years old</p>
             </div>
             <div class="form-group col-2">
                 <label for="charHeight">Height</label>
-                <input type="text" pattern="\d*" class="form-control" min="1" maxlength="3" id="charHeight">
+                <input type="text" class="form-control" min="1" maxlength="3" name="charHeight">
                 <p>inches</p>
             </div>
             <div class="form-group col-2">
                 <label for="charWeight">Weight</label>
-                <input type="text" pattern="\d*" class="form-control" min="1" maxlength="4" id="charWeight">
+                <input type="text" class="form-control" min="1" maxlength="4" name="charWeight">
                 <p>lbs.</p>
             </div>
         </div>
@@ -54,47 +54,48 @@
                     <tr class="d-flex">
                         <td class="col-3">Strength</td>
                         <td class="col-2">
-                            <input class="form-control" type="text" pattern="/^([0-1]?[0-9]|20)$" id="strength" min="1" max="20" maxlength="2" value="0">
+                            <input class="form-control" type="number" min="1" max="20" maxlength="2" name="strAtt">
                         </td>
                         <td class="col-2"></td>
                     </tr>
                     <tr class="d-flex">
                         <td class="col-3">Dexterity</td>
                         <td class="col-2">
-                            <input class="form-control" type="text" pattern="/^([0-1]?[0-9]|20)$" id="dexterity" min="1" max="20" maxlength="2" value="0">
+                            <input class="form-control" type="number" min="1" max="20" maxlength="2" name="dexAtt">
                         </td>
                         <td class="col-2"></td>
                     </tr>
                     <tr class="d-flex">
                         <td class="col-3">Constitution</td>
                         <td class="col-2">
-                            <input class="form-control" type="text" pattern="/^([0-1]?[0-9]|20)$" id="constitution" min="1" max="20" maxlength="2" value="0">
+                            <input class="form-control" type="number" min="1" max="20" maxlength="2" name="conAtt">
                         </td>
                         <td class="col-2"></td>
                     </tr>
                     <tr class="d-flex">
                         <td class="col-3">Intelligence</td>
                         <td class="col-2">
-                            <input class="form-control" type="text" pattern="/^([0-1]?[0-9]|20)$" id="intelligence" min="1" max="20" maxlength="2" value="0">
+                            <input class="form-control" type="number" min="1" max="20" maxlength="2" name="intAtt">
                         </td>
                         <td class="col-2"></td>
                     </tr>
                     <tr class="d-flex">
                         <td class="col-3">Wisdom</td>
                         <td class="col-2">
-                            <input class="form-control" type="text" pattern="/^([0-1]?[0-9]|20)$" id="wisdom" min="1" max="20" maxlength="2" value="0">
+                            <input class="form-control" type="number" min="1" max="20" maxlength="2" name="wisAtt">
                         </td>
                         <td class="col-2"></td>
                     </tr>
                     <tr class="d-flex">
                         <td class="col-3">Charisma</td>
                         <td class="col-2">
-                            <input class="form-control" type="text" pattern="/^([0-1]?[0-9]|20)$" id="charisma" min="1" max="20" maxlength="2" value="0">
+                            <input class="form-control" type="number" min="1" max="20" maxlength="2" name="chaAtt">
                         </td>
                         <td class="col-2"></td>
                     </tr>
                 </tbody>
             </table>
+            <p class="error error--hidden"></p>
             <input type="submit" value="Save" class="btn2 btn-warning">
         </div>
     </form>
