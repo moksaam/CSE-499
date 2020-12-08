@@ -3,9 +3,9 @@ from mydb import db
 from user.models import User
 import uuid
 
-class playerCharacter:
+class pSkills:
 
-    def saveChar(self):
+    def saveSkills(self):
         print(request.form)
 
         # Create the player character object

@@ -5,6 +5,14 @@ import uuid
 
 class User:
 
+    # Create the user object
+    user = {
+        "_id": '',
+        "username": '',
+        "email": '',
+        "password": ''
+    }
+
     def start_session(self, user):
         del user['password']
         session['logged_in'] = True
@@ -13,13 +21,13 @@ class User:
 
     def signup(self):
         print(request.form)
-        
+
         # Create the user object
         user = {
             "_id": uuid.uuid4().hex,
             "username": request.form.get('username'),
             "email": request.form.get('email'),
-            "password": request.form.get('password'),
+            "password": request.form.get('password')
         }
 
         # Encrypt the password

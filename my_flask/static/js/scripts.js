@@ -55,7 +55,7 @@ $("form[name=saveChar_form").submit(function(e) {
         dataType: "json",
         success: function(resp) {
             console.log(data);
-            window.location.href = "/charSkills/";
+            window.location.href = "/charSkills/";           
         },
         error: function(resp) {
             $error.text(resp.responseJSON.error).removeClass("error--hidden");
